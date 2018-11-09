@@ -10,4 +10,4 @@ Para ejecutar la webapp es necesario ejecutar:
 `ng serve`
 
 # SERVER
-Abrir con Netbeans o ejecutar el maven a con esta class como principal: `com.todo1.server.ServerApplication
+Abrir con Netbeans o ejecutar el maven a con esta class como principal: `com.todo1.server.ServerApplication`
