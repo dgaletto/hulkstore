@@ -1,0 +1,18 @@
+<table class="table table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Buyer</th>
+      <th scope="col">Products Quantity</th>
+      <th scope="col">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let order of orders" [routerLink]="'/market/'+order.id">
+      <th scope="row">{{ order.id }}</th>
+      <td>{{ order.user.firstName }}</td>
+      <td>{{ order.products.length }}</td>
+      <td>{{ order.date |date: 'short' }}</td>
+    </tr>
+  </tbody>
+</table>

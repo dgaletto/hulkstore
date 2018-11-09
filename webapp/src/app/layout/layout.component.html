@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" [routerLink]="'/home'">Hulk Store</a>
+    <button class="navbar-toggler" (click)="toggleNavbar()" type="button" aria-controls="theNavbar" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div [ngbCollapse]="isNavbarCollapsed" id="theNavbar" class="navbar-collapse collapse navbar-toggleable">
+      <ul class="navbar-nav mr-auto ml-auto">
+        <li class="nav-item" [routerLinkActive]="['active']">
+          <a class="nav-link" [routerLink]="'/home'">Home</a>
+        </li>
+        <li class="nav-item" [routerLinkActive]="['active']">
+          <a class="nav-link" [routerLink]="'/product'">Products</a>
+        </li>
+        <li class="nav-item" [routerLinkActive]="['active']">
+          <a class="nav-link" [routerLink]="'/market'">Market</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="mt-5">
+  <router-outlet></router-outlet>
+</div>
