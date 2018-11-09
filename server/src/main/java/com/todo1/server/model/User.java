@@ -13,12 +13,10 @@ import lombok.Setter;
 @Entity
 @Data
 @NoArgsConstructor
-public class Product {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private @NonNull String name;
-    private @Getter @Setter Number quantity;
-    private @Getter @Setter double price;
-    
+    private @NonNull @Getter @Setter String firstName;
+    private @NonNull @Getter @Setter String lastName;
 }

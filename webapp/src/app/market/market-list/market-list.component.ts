@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Order } from 'src/app/shared/models/order';
-import { OrderService } from 'src/app/shared/services/order.service';
+import { Market } from 'src/app/shared/models/market';
+import { MarketService } from 'src/app/shared/services/market.service';
 import { Title } from '@angular/platform-browser';
 
 @Component({
@@ -11,19 +11,19 @@ import { Title } from '@angular/platform-browser';
 })
 export class MarketListComponent implements OnInit, OnDestroy {
 
-  subcribeOrders: Subscription;
-  orders: Order[];
+  subcribeMarkets: Subscription;
+  markets: Market[];
 
-  constructor(private orderService: OrderService, private title: Title) { }
+  constructor(private marketService: MarketService, private title: Title) { }
 
   ngOnInit() {
     this.title.setTitle('Market | Hulk Store');
-    this.subcribeOrders = this.orderService.getAll()
-      .subscribe(orders => this.orders = orders);
+    this.subcribeMarkets = this.marketService.getAll()
+      .subscribe(markets => this.markets = markets);
   }
 
   ngOnDestroy(): void {
-    this.subcribeOrders.unsubscribe();
+    this.subcribeMarkets.unsubscribe();
   }
 
 }

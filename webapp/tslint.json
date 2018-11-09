@@ -32,10 +32,10 @@
       140
     ],
     "member-access": false,
-    "member-ordering": [
+    "member-marketing": [
       true,
       {
-        "order": [
+        "market": [
           "static-field",
           "instance-field",
           "static-method",

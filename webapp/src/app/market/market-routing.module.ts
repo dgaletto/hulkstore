@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MarketComponent } from './market.component';
 import { MarketListComponent } from './market-list/market-list.component';
-import { OrderFormComponent } from './order-form/order-form.component';
+import { MarketFormComponent } from './market-form/market-form.component';
 
 const routes: Routes = [
   {
@@ -16,11 +16,11 @@ const routes: Routes = [
       },
       {
         path: 'add',
-        component: OrderFormComponent
+        component: MarketFormComponent
       },
       {
         path: ':id',
-        component: OrderFormComponent
+        component: MarketFormComponent
       }
     ]
   }

@@ -1,26 +1,36 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { User } from '../models/user';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  private usersMock: User[] = [
-    { 'firstName': 'Employee 1', 'lastName': 'Employee 1', 'id': '1' },
-    { 'firstName': 'Employee 2', 'lastName': 'Employee 2', 'id': '2' },
-    { 'firstName': 'Employee 3', 'lastName': 'Employee 3', 'id': '3' }
-  ];
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   getAll(): Observable<User[]> {
-    return of(this.usersMock);
+    return this.http.get<User[]>(environment.apiURL + '/users');
   }
 
   getById(id: string): Observable<User> {
-    return of(this.usersMock.find(user => user.id === id));
+    return this.http.get<User>(environment.apiURL + '/users/' + id);
+  }
+
+  add(user: User): Observable<User> {
+    return this.http.post<User>(environment.apiURL + '/users/', JSON.stringify(user), this.httpOptions);
+  }
+
+  update(user: User): Observable<User> {
+    return this.http.put<User>(environment.apiURL + '/users/' + user.id, JSON.stringify(user), this.httpOptions);
   }
 
 

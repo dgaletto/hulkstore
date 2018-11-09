@@ -1,7 +1,7 @@
 import { Product } from './product';
 import { User } from './user';
 
-export class Order {
+export class Market {
   id?: string;
   date: Date;
   products: Product[];

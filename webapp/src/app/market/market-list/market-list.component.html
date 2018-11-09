@@ -8,11 +8,11 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let order of orders" [routerLink]="'/market/'+order.id">
-      <th scope="row">{{ order.id }}</th>
-      <td>{{ order.user.firstName }}</td>
-      <td>{{ order.products.length }}</td>
-      <td>{{ order.date |date: 'short' }}</td>
+    <tr *ngFor="let market of markets" [routerLink]="'/market/'+market.id">
+      <th scope="row">{{ market.id }}</th>
+      <td>{{ market.user.firstName }}</td>
+      <td>{{ market.products.length }}</td>
+      <td>{{ market.date |date: 'short' }}</td>
     </tr>
   </tbody>
 </table>

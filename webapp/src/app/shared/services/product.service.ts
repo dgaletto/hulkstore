@@ -1,40 +1,36 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../models/product';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  private productMock: Product[] = [
-    { 'name': 'T-Shirt - Wolverine', 'quantity':  10, 'price': 10.5, 'id': '1' },
-    { 'name': 'Cup - Superman', 'quantity':  0, 'price': 8, 'id': '2' },
-    { 'name': 'Pillow - Spiderman', 'quantity':  23, 'price': 15, 'id': '3' },
-  ];
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   getAll(): Observable<Product[]> {
-    return of(this.productMock);
+    return this.http.get<Product[]>(environment.apiURL + '/products');
   }
 
   getById(id: string): Observable<Product> {
-    return of(this.productMock.find(product => product.id === id));
+    return this.http.get<Product>(environment.apiURL + '/products/' + id);
   }
 
   add(product: Product): Observable<Product> {
-    product.id = this.productMock.length + 1 + '';
-    this.productMock.push(product);
-
-    return of(product);
+    return this.http.post<Product>(environment.apiURL + '/products/', JSON.stringify(product), this.httpOptions);
   }
 
   update(product: Product): Observable<Product> {
-    const index = this.productMock.findIndex(prod => prod.id === product.id);
-    this.productMock[index] = product;
-
-    return of(product);
+    return this.http.put<Product>(environment.apiURL + '/products/' + product.id, JSON.stringify(product), this.httpOptions);
   }
 
 }
